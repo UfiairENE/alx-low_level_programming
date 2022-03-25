@@ -1,28 +1,34 @@
 #include "main.h"
 /**
- * *leet - Encode an entire string into 1337
+ * *cap_string - Capitalizes all words of a string
  * @a: Pointer to a char array char[]
- * Return: string encoded into 1337
+ * Return: string capitalized
  */
-char *leet(char *a)
+char *cap_string(char *a)
 {
-	int i = 0, j;
-	char x[] = {'a', 'e', 'o', 't', 'l'};
-	char y[] = {'A', 'E', 'O', 'T', 'L'};
-	char z[] = {'4', '3', '0', '7', '1'};
+	int i, j;
+	char separators[] = {32, 9, 10, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
 
-	while (a[i] != '\0')
+
+	for (i = 0; a[i] != '\0'; i++)
 	{
-		for (j = 0; j < 5; j++)
+		if (i == 0)
+			if (a[i] >= 'a' && a[i] <= 'z')
+				a[i] -= 32;
+
+		for (j = 0; j < 13; j++)
 		{
-			if (a[i] == x[j] || a[i] == y[j])
+			if (a[i] == separators[j])
 			{
-				a[i] = z[j];
+				if (a[i + 1] == '\0')
+					break;
+
+				if (a[i + 1] >= 'a' && a[i + 1] <= 'z')
+					a[i + 1] -= 32;
 			}
 		}
-		i++;
-	}
 
+	}
 
 	return (a);
 }
