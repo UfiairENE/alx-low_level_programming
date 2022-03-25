@@ -1,29 +1,31 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * rot13 - encodes a string in rot13
- * @s: string to be encoded
- *
- * Return: the resulting string
+ * *rot13 - Encode an entire string using rot13
+ * @a: Pointer to a char array char[]
+ * Return: string encoded into 1337
  */
-char *rot13(char *s)
+char *rot13(char *a)
 {
-	int i, j;
+	int i = 0, j;
+	char *x = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char *y = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
-	for (i = 0; s[i] != '\0'; i++)
+	while (a[i] != '\0')
 	{
-		for (j = 0; a[j] != '\0'; j++)
+		j = 0;
+		while (x[j] != '\0')
 		{
-			if (s[i] == a[j])
+			if (a[i] == x[j])
 			{
-				s[i] = b[j];
+				a[i] = y[j];
 				break;
 			}
+			j++;
 		}
+		i++;
 	}
 
-	return (s);
+
+	return (a);
 }
