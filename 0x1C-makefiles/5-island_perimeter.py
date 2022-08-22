@@ -28,4 +28,4 @@ def island_perimeter(grid):
             if grid[i][j]:
                 perim += num_water_neighbors(grid, i, j)
 
-    return perim
+    return
